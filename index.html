@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เป็นแฟนกันนะ แฮวอน 🥺</title>
+    <title>เป็นแฟนกันนะ 🥺</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
@@ -24,47 +24,27 @@
         .btn-yes { background-color: #ff6584; color: white; box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4); }
         .btn-no { background-color: #f1f2f6; color: #57606f; position: absolute; transition: all 0.2s ease; }
         #success-view { display: none; }
-        #success-view img { width: 160px; margin-bottom: 20px; }
-        #success-view h2 { color: #ff6584; font-size: 22px; margin-bottom: 10px; }
-        .sweet-text { color: #2c3e50; font-size: 18px; font-weight: 500; margin-bottom: 15px; }
-        .hint { font-size: 13px; color: #95a5a6; margin-top: 25px; }
+        .success-icon { font-size: 50px; margin-bottom: 15px; }
+        p { color: #7f8c8d; font-size: 14px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="card" id="main-card">
-        <div id="question-view">
+    <div class="card">
+        <div id="ask-view">
             <h1>เป็นแฟนกับพี่นะ แฮวอน 🥺</h1>
             <div class="btn-container">
-                <button class="btn-yes" id="yesBtn">เป็น 💖</button>
-                <button class="btn-no" id="noBtn">ไม่เป็น 💔</button>
+                <button id="btn-yes" class="btn-yes">เป็น 💖</button>
+                <button id="btn-no" class="btn-no">ไม่เป็น 💔</button>
             </div>
-            <p class="hint">ถ้าตกลงจะรักและดูแลอย่างดีเลยนะตัวเธอออ ~</p>
+            <p>ถ้าตกลงจะรักและดูแลอย่างดีเลยนะตัวเธอออ ~</p>
         </div>
 
         <div id="success-view">
-            <img src="https://media1.tenor.com/m/Z608x1rJ8G0AAAAC/tkthao219-bubududu.gif" alt="Cute Cats">
-            <h2>เย่! แฮวอนตอบตกลงแล้ว 🎉</h2>
-            <p class="sweet-text">หลังจากนี้เป็นแฟนกันแล้วไอ้เด็กน้อย 💖</p>
-            <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 10px;">ดีใจจัง รักแฮวอนที่สุดเลยนะยัยหนู ~</p>
+            <div class="success-icon">🥰🎉</div>
+            <h1>เย้! รักที่สุดเลยครับซ๊อบบ 💖</h1>
+            <p>สัญญาวันนี้และตลอดไปว่าจะดูแลเธอให้ดีที่สุดนะ!</p>
         </div>
     </div>
 
-    <script>
-        // อีเมลของคุณที่ตั้งค่าไว้แล้ว
-        const MY_EMAIL = "2.3.wachirawit@prathai.ac.th"; 
-
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const questionView = document.getElementById('question-view');
-        const successView = document.getElementById('success-view');
-
-        noBtn.style.left = "170px"; noBtn.style.top = "0px";
-
-        // ฟังก์ชันสุ่มตำแหน่งปุ่มให้วิ่งหนี
-        function moveButton() {
-            const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-            const maxY = window.innerHeight - noBtn.offsetHeight - 20;
-            const randomX = Math.max(10, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(10, Math.floor(Math.random() * maxY));
-            noBtn.style.position = 'fixed';
+    
