@@ -16,13 +16,13 @@
             box-shadow: 0 12px 30px rgba(0,0,0,0.08); text-align: center; width: 340px; position: relative;
         }
         h1 { color: #2c3e50; font-size: 24px; margin-bottom: 30px; font-weight: 500; }
-        .btn-container { display: flex; justify-content: center; gap: 20px; height: 50px; position: relative; }
+        .btn-container { display: flex; justify-content: center; gap: 20px; height: 60px; position: relative; }
         button {
             padding: 12px 35px; font-size: 18px; font-family: 'Kanit', sans-serif;
             border: none; border-radius: 30px; cursor: pointer; font-weight: 500;
         }
-        .btn-yes { background-color: #ff6584; color: white; box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4); }
-        .btn-no { background-color: #f1f2f6; color: #57606f; position: absolute; transition: all 0.2s ease; }
+        .btn-yes { background-color: #ff6584; color: white; box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4); position: relative; z-index: 10; }
+        .btn-no { background-color: #f1f2f6; color: #57606f; position: absolute; transition: all 0.15s ease; z-index: 5; }
         #success-view { display: none; }
         .success-icon { font-size: 50px; margin-bottom: 15px; }
         p { color: #7f8c8d; font-size: 14px; margin-top: 20px; }
@@ -47,4 +47,42 @@
         </div>
     </div>
 
-    
+    <script>
+        const askView = document.getElementById('ask-view');
+        const successView = document.getElementById('success-view');
+        const btnYes = document.getElementById('btn-yes');
+        const btnNo = document.getElementById('btn-no');
+
+        // ตั้งตำแหน่งเริ่มต้นให้ปุ่มไม่เป็น
+        btnNo.style.left = '160px';
+        btnNo.style.top = '0px';
+
+        // ฟังก์ชันสุ่มวิ่งหนี
+        function moveButton() {
+            // สุ่มตำแหน่งให้อยู่ภายในขอบเขตหน้าจอไอแพด/มือถือพอดี ไม่หลุดหายไปไหน
+            const randomX = Math.floor(Math.random() * 200) - 100;
+            const randomY = Math.floor(Math.random() * 300) - 150;
+            
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+        }
+
+        // วิ่งหนีเมื่อเอาเมาส์ชี้ หรือเอานิ้วไปแตะ
+        btnNo.addEventListener('mouseover', moveButton);
+        btnNo.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // กันไม่ให้ซูมหน้าจอเวลากดรัวๆ
+            moveButton();
+        });
+
+        // เมื่อกดปุ่ม "เป็น" ให้เปลี่ยนหน้าจอทันทีชัวร์ๆ 100%
+        btnYes.addEventListener('click', () => {
+            askView.style.display = 'none';
+            successView.style.display = 'block';
+            
+            // แจ้งเตือนเข้าเมลคุณแบบเบสิก (ดึงแอปเมลขึ้นมาส่งข่าวด่วน)
+            window.location.href = "mailto:2.3.wachirawit@prathai.ac.th?subject=คำตอบจากแฮวอน&body=แฮวอนตกลงเป็นแฟนกับคุณแล้วนะ! 🎉💖";
+        });
+    </script>
+
+</body>
+</html>
