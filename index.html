@@ -1,88 +1,193 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เป็นแฟนกันนะ 🥺</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;
-            height: 100vh; background-color: #d2f1da; font-family: 'Kanit', sans-serif; overflow: hidden;
-        }
-        .card {
-            background: white; padding: 40px 30px; border-radius: 24px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08); text-align: center; width: 340px; position: relative;
-        }
-        h1 { color: #2c3e50; font-size: 24px; margin-bottom: 30px; font-weight: 500; }
-        .btn-container { display: flex; justify-content: center; gap: 20px; height: 60px; position: relative; }
-        button {
-            padding: 12px 35px; font-size: 18px; font-family: 'Kanit', sans-serif;
-            border: none; border-radius: 30px; cursor: pointer; font-weight: 500;
-        }
-        .btn-yes { background-color: #ff6584; color: white; box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4); position: relative; z-index: 10; }
-        .btn-no { background-color: #f1f2f6; color: #57606f; position: absolute; transition: all 0.15s ease; z-index: 5; }
-        #success-view { display: none; }
-        .success-icon { font-size: 50px; margin-bottom: 15px; }
-        p { color: #7f8c8d; font-size: 14px; margin-top: 20px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เป็นแฟนกันนะ 🥺</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Kanit',sans-serif;
+    background:#d2f1da;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+.card{
+    width:360px;
+    background:#fff;
+    border-radius:25px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+    position:relative;
+}
+
+h1{
+    color:#2c3e50;
+    margin-bottom:25px;
+}
+
+.btn-area{
+    position:relative;
+    width:100%;
+    height:220px;
+}
+
+button{
+    border:none;
+    border-radius:30px;
+    padding:14px 35px;
+    font-size:18px;
+    font-family:'Kanit',sans-serif;
+    cursor:pointer;
+    transition:.15s;
+}
+
+#btnYes{
+    position:absolute;
+    left:30px;
+    top:90px;
+    background:#ff6584;
+    color:#fff;
+    box-shadow:0 8px 20px rgba(255,101,132,.4);
+}
+
+#btnNo{
+    position:absolute;
+    left:180px;
+    top:90px;
+    background:#f1f2f6;
+    color:#444;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+p{
+    margin-top:10px;
+    color:#888;
+}
+
+#success{
+    display:none;
+}
+
+.success{
+    font-size:60px;
+    margin-bottom:15px;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="card">
-        <div id="ask-view">
-            <h1>เป็นแฟนกับพี่นะ แฮวอน 🥺</h1>
-            <div class="btn-container">
-                <button id="btn-yes" class="btn-yes">เป็น 💖</button>
-                <button id="btn-no" class="btn-no">ไม่เป็น 💔</button>
-            </div>
-            <p>ถ้าตกลงจะรักและดูแลอย่างดีเลยนะตัวเธอออ ~</p>
-        </div>
+<div class="card">
 
-        <div id="success-view">
-            <div class="success-icon">🥰🎉</div>
-            <h1>เย้! รักที่สุดเลยครับซ๊อบบ 💖</h1>
-            <p>สัญญาวันนี้และตลอดไปว่าจะดูแลเธอให้ดีที่สุดนะ!</p>
-        </div>
-    </div>
+<div id="question">
 
-    <script>
-        const askView = document.getElementById('ask-view');
-        const successView = document.getElementById('success-view');
-        const btnYes = document.getElementById('btn-yes');
-        const btnNo = document.getElementById('btn-no');
+<h1>เป็นแฟนกับพี่นะ แฮวอน 🥺</h1>
 
-        // ตั้งตำแหน่งเริ่มต้นให้ปุ่มไม่เป็น
-        btnNo.style.left = '160px';
-        btnNo.style.top = '0px';
+<div class="btn-area">
 
-        // ฟังก์ชันสุ่มวิ่งหนี
-        function moveButton() {
-            // สุ่มตำแหน่งให้อยู่ภายในขอบเขตหน้าจอไอแพด/มือถือพอดี ไม่หลุดหายไปไหน
-            const randomX = Math.floor(Math.random() * 200) - 100;
-            const randomY = Math.floor(Math.random() * 300) - 150;
-            
-            btnNo.style.left = randomX + 'px';
-            btnNo.style.top = randomY + 'px';
-        }
+<button id="btnYes">
+เป็น 💖
+</button>
 
-        // วิ่งหนีเมื่อเอาเมาส์ชี้ หรือเอานิ้วไปแตะ
-        btnNo.addEventListener('mouseover', moveButton);
-        btnNo.addEventListener('touchstart', function(e) {
-            e.preventDefault(); // กันไม่ให้ซูมหน้าจอเวลากดรัวๆ
-            moveButton();
-        });
+<button id="btnNo">
+ไม่เป็น 💔
+</button>
 
-        // เมื่อกดปุ่ม "เป็น" ให้เปลี่ยนหน้าจอทันทีชัวร์ๆ 100%
-        btnYes.addEventListener('click', () => {
-            askView.style.display = 'none';
-            successView.style.display = 'block';
-            
-            // แจ้งเตือนเข้าเมลคุณแบบเบสิก (ดึงแอปเมลขึ้นมาส่งข่าวด่วน)
-            window.location.href = "mailto:2.3.wachirawit@prathai.ac.th?subject=คำตอบจากแฮวอน&body=แฮวอนตกลงเป็นแฟนกับคุณแล้วนะ! 🎉💖";
-        });
-    </script>
+</div>
+
+<p>ถ้าตกลงจะรักและดูแลอย่างดีเลยนะตัวเธอออ~</p>
+
+</div>
+
+<div id="success">
+
+<div class="success">
+🥰🎉
+</div>
+
+<h1>เย้! รักที่สุดเลยครับ 💖</h1>
+
+<p>สัญญาว่าจะดูแลเธอให้ดีที่สุด ❤️</p>
+
+</div>
+
+</div>
+
+<script>
+
+const btnNo=document.getElementById("btnNo");
+const btnYes=document.getElementById("btnYes");
+
+const question=document.getElementById("question");
+const success=document.getElementById("success");
+
+const card=document.querySelector(".card");
+
+// ฟังก์ชันสุ่มตำแหน่งใหม่
+function moveButton(){
+
+    const cardRect=card.getBoundingClientRect();
+    const btnRect=btnNo.getBoundingClientRect();
+
+    const padding=20;
+
+    const maxX=cardRect.width-btnRect.width-padding;
+    const maxY=cardRect.height-btnRect.height-padding;
+
+    const x=Math.random()*maxX;
+    const y=Math.random()*(maxY-80)+60;
+
+    btnNo.style.left=x+"px";
+    btnNo.style.top=y+"px";
+}
+
+// PC
+btnNo.addEventListener("mouseenter",moveButton);
+
+// มือถือ
+btnNo.addEventListener("touchstart",function(e){
+    e.preventDefault();
+    moveButton();
+},{passive:false});
+
+// รองรับทั้งเมาส์และนิ้ว
+btnNo.addEventListener("pointerdown",function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+// เผลอกดทันก็วิ่งหนีอีก
+btnNo.addEventListener("click",function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+// กดปุ่มเป็น
+btnYes.addEventListener("click",function(){
+
+    question.style.display="none";
+    success.style.display="block";
+
+    // ถ้าไม่ต้องการเปิดเมล ให้ลบบรรทัดด้านล่างได้
+    window.location.href="mailto:2.3.wachirawit@prathai.ac.th?subject=แฮวอนตอบตกลง&body=แฮวอนตกลงเป็นแฟนแล้ว ❤️";
+
+});
+
+</script>
 
 </body>
 </html>
